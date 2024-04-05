@@ -48,7 +48,7 @@
         const LISTETEXT = document.getElementById("list_ingredient_text");
         const LISTE = document.getElementById("liste_ingredient");
         if (LISTE.value == '') {
-            LISTE.value = item
+            LISTE.value = item;
             LISTETEXT.value = item;
         } else {
             LISTE.value += "," + item;
