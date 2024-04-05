@@ -4,7 +4,7 @@ class Connect{
 
     private function __construct(){
         try{
-            self::$db = new PDO("mysql:host=localhost;dbname=recettes", "admin", "admin");
+            self::$db = new PDO("mysql:host=localhost;dbname=recettes", "admin", "");
         }catch(PDOException $e){
             echo $e->getMessage();
         }
