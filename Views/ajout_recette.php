@@ -1,8 +1,8 @@
 <div class="container">
-    <form>
+    <form action="?url=add" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Titre</label>
-            <input type="email" name="titre" class="form-control">
+            <label for="titre" class="form-label">Titre</label>
+            <input type="text" name="titre" class="form-control">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Description</label>
@@ -16,7 +16,8 @@
 
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Liste ingredients</label>
-            <input type="text" id="liste_ingredient" name="ingredient" class="form-control" disabled>
+            <input type="text" id="liste_ingredient" name="ingredient" class="form-control" hidden>
+            <textarea id="list_ingredient_text" cols="30" rows="1" class="form-control" disabled></textarea>
         </div>
 
         <div class="input-group mb-3">
@@ -26,7 +27,7 @@
 
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Options</label>
-            <select class="form-select" id="inputGroupSelect01">
+            <select class="form-select" id="inputGroupSelect01" name="categorie">
                 <option value="">Selectionnez une categorie</option>
                 <?php foreach ($categories as $categorie) { ?>
                     <option value="<?= $categorie['id_categorie'] ?>"><?= $categorie['nom'] ?></option>
@@ -44,11 +45,14 @@
         e.preventDefault();
         let item = document.getElementById("ingredient").value;
 
+        const LISTETEXT = document.getElementById("list_ingredient_text");
         const LISTE = document.getElementById("liste_ingredient");
         if (LISTE.value == '') {
             LISTE.value = item
+            LISTETEXT.value = item;
         } else {
             LISTE.value += "," + item;
+            LISTETEXT.value += "," + item;
         }
 
         document.getElementById("ingredient").value = "";

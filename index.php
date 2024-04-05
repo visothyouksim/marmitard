@@ -11,7 +11,7 @@ $url = (isset($_GET['url'])) ? $_GET['url'] : 'home';
 //     $url = 'home';
 // }
 
-switch($url){
+switch ($url) {
     case 'home':
         $controller = new HomeController();
         $controller->afficherPageAccueil();
@@ -39,6 +39,10 @@ switch($url){
     case 'ajout_recette': // permet d'afficher le formulaire d'ajour de recette
         $controller = new RecetteController();
         $controller->ajoutForm();
+        break;
+    case 'add': // valide l'ajout de recette
+        $controller = new RecetteController();
+        $controller->add();
         break;
     default:
         echo "404 not found!";
